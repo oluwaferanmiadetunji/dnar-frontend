@@ -1,5 +1,5 @@
 import { lazy } from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Switch, Redirect, Route } from 'react-router-dom';
 
 import { ROUTES } from 'utils/constants';
 import AuthRoute from './AuthRoute';

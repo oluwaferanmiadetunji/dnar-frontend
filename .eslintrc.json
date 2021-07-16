@@ -24,7 +24,7 @@
         "prettier/prettier": [
             "error",
             {
-                "printWidth": 150,
+                "printWidth": 200,
                 "trailingComma": "all",
                 "semi": true,
                 "jsxSingleQuote": true,

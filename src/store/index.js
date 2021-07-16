@@ -2,9 +2,11 @@ import { configureStore, combineReducers, getDefaultMiddleware } from '@reduxjs/
 import storage from 'redux-persist/lib/storage';
 import { persistReducer } from 'redux-persist';
 import UserReducer from './user.slice';
+import RolesReducer from './roles.slice';
 
 const rootReducer = combineReducers({
 	user: UserReducer,
+	roles: RolesReducer,
 });
 
 const persistConfig = {

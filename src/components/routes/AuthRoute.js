@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 import { ROUTES } from 'utils/constants';
 
 const Authenticated = ({ component: Component, ...rest }) => {
-	const isLogged = useSelector((state) => state.user);
+	const { isLogged } = useSelector((state) => state.user);
 
 	return <Route {...rest} render={(props) => (isLogged ? <Component {...props} /> : <Redirect to={ROUTES.HOME} />)} />;
 };

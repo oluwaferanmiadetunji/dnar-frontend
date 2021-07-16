@@ -1,0 +1,13 @@
+.container {
+	width: 100vw;
+	height: 100vh;
+	overflow: hidden;
+	position: relative;
+    background: white;
+
+	&__content {
+		height: calc(100vh - 70px);
+        overflow-y: auto;
+        margin-top: 70px;
+	}
+}
