@@ -3,9 +3,26 @@ body {
 	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-	background: #e5e5e5;
+	background: white;
+	height: 100vh;
+	width: 100vw;
 }
 
 code {
 	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+.ant-collapse > .ant-collapse-item.ant-collapse-no-arrow > .ant-collapse-header {
+	background: lightgray;
+	color: black;
+	font-size: 16px;
+	font-weight: 600;
+	border: 2px solid black;
+}
+
+.ant-collapse-borderless > .ant-collapse-item > .ant-collapse-content > .ant-collapse-content-box {
+	background: white;
+	border-right: 2px solid black;
+	border-left: 2px solid black;
+	border-bottom: 2px solid black;
 }

@@ -1,26 +1,44 @@
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { message } from 'antd';
 
 import styles from './style.module.scss';
 
 import { Button as Loader } from 'components/loader';
 
-import { ROUTES } from 'utils/contants';
+import { ROUTES } from 'utils/constants';
+
+import { makePostRequest } from 'utils/api';
+
+import { useDispatch } from 'react-redux';
+import { setIsLogged, setUserData } from 'store/user.slice';
 
 export default function Login() {
 	const history = useHistory();
+	const dispatch = useDispatch();
+
 	const [loading, setLoading] = useState(false);
 
 	const [email, setEmail] = useState('');
 
-	const handleSubmit = (event) => {
+	const handleSubmit = async (event) => {
 		event.preventDefault();
 		setLoading(true);
 
-		setTimeout(() => {
-			setLoading(false);
-			history.push(ROUTES.DASHBOARD);
-		}, 1500);
+		const { error, data } = await makePostRequest({ path: '/employee/login', payload: { email } });
+
+		if (!error) {
+			message.success('Login successful');
+
+			setTimeout(() => {
+				setLoading(false);
+				dispatch(setIsLogged(true));
+				dispatch(setUserData(data));
+				history.push(ROUTES.DASHBOARD);
+			}, 500);
+		} else {
+			message.error(data.message);
+		}
 	};
 
 	return (

@@ -1,19 +1,27 @@
-import { lazy } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Suspense } from 'react';
+import { BrowserRouter } from 'react-router-dom';
 
-import { ROUTES } from 'utils/contants';
+import { Loader } from 'components/loader';
+import Routes from 'components/routes';
 
-const Home = lazy(() => import('pages/home'));
-const Dashboard = lazy(() => import('pages/dashboard'));
+import store from 'store';
+import { persistStore } from 'redux-persist';
+import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
+
+const persistor = persistStore(store);
 
 function App() {
 	return (
-		<div>
-			<Switch>
-				<Route exact path={ROUTES.DASHBOARD} component={Dashboard} />
-				<Route exact path={ROUTES.HOME} component={Home} />
-			</Switch>
-		</div>
+		<Suspense fallback={<Loader />}>
+			<Provider store={store}>
+				<PersistGate loading={null} persistor={persistor}>
+					<BrowserRouter>
+						<Routes />
+					</BrowserRouter>
+				</PersistGate>
+			</Provider>
+		</Suspense>
 	);
 }
 

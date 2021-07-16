@@ -2,7 +2,7 @@ import styles from './style.module.scss';
 
 import { useHistory } from 'react-router-dom';
 
-import { ROUTES } from 'utils/contants';
+import { ROUTES } from 'utils/constants';
 
 export default function Header() {
 	const history = useHistory();

@@ -1,4 +1,369 @@
 .container {
-	height: 100vh;
+	height: 100%;
 	width: 100vw;
+	background: white;
+
+	&__header {
+		display: flex;
+		margin: 20px auto;
+		width: 90%;
+		height: 160px;
+		border: 2px solid black;
+		padding: 20px;
+		border-radius: 5px;
+		justify-content: space-between;
+
+		&__user {
+			height: 100px;
+			width: 100px;
+			padding: 10px;
+			display: flex;
+			justify-content: center;
+			text-align: center;
+			align-items: center;
+			border: 2px solid black;
+			border-radius: 5px;
+
+			&__icon {
+				font-size: 60px;
+			}
+		}
+
+		&__welcome {
+			font-size: 18px;
+			color: black;
+			margin-left: 20px;
+			text-align: center;
+			justify-content: center;
+			margin-top: 5px;
+		}
+
+		&__role {
+			text-align: center;
+			justify-content: center;
+
+			&__header {
+				font-size: 20px;
+				color: black;
+				margin-bottom: 20px;
+			}
+		}
+
+		&__projects {
+			width: 220px;
+			height: 120px;
+			border: 1px solid black;
+			border-radius: 5px;
+			position: relative;
+
+			&__header {
+				font-size: 16px;
+				font-weight: 900;
+				color: black;
+				padding: 0 3px;
+				position: absolute;
+				left: 10px;
+				top: -13px;
+				background: white;
+			}
+
+			&__container {
+				margin-top: 15px;
+
+				&__item {
+					width: 90%;
+					height: 80%;
+					border: 1px solid black;
+					border-radius: 5px;
+					margin: auto;
+					padding: 10px;
+
+					&__text {
+						font-size: 14px;
+						color: black;
+						margin-bottom: 0px;
+					}
+				}
+			}
+		}
+	}
+
+	&__details {
+		margin: 30px auto;
+		width: 90%;
+		height: 500px;
+		border: 2px solid black;
+		padding: 20px;
+		border-radius: 5px;
+
+		&__header {
+			display: flex;
+			justify-content: space-between;
+			height: 60px;
+			width: 100%;
+			margin: auto;
+			box-shadow: 0 2px 3px rgba(22, 35, 89, 0.08);
+			padding: 10px 20px;
+			border: 2px solid black;
+			border-radius: 5px;
+
+			&__links {
+				display: flex;
+				margin-top: 7px;
+
+				&__item {
+					margin-right: 10px;
+					font-size: 14px;
+					color: #767e9f;
+					margin-bottom: 0px;
+					cursor: pointer;
+				}
+			}
+
+			&__search {
+				display: flex;
+
+				&__button {
+					width: 120px;
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					background: #4d75f4;
+					border-radius: 5px;
+					color: white;
+					cursor: pointer;
+					font-size: 15px;
+					border: 1px solid #4d75f4;
+					margin-right: 20px;
+
+					&:hover {
+						background: white;
+						color: #4d75f4;
+						border: 1px solid #4d75f4;
+					}
+				}
+
+				&__bar {
+					position: relative;
+
+					&__input {
+						height: 36px;
+						padding: 10px 20px 10px 35px;
+						border-radius: 5px;
+					}
+
+					&__icon {
+						position: absolute;
+						left: 10px;
+						top: 10px;
+						color: #767e9f;
+						font-size: 18px;
+					}
+				}
+			}
+		}
+
+		&__modal {
+			&__header {
+				font-size: 18px;
+				color: #767e9f;
+				margin-bottom: 0px;
+				text-align: center;
+				justify-content: center;
+			}
+
+			&__form {
+				margin-top: 20px;
+				width: 100%;
+
+				&__item {
+					display: block;
+					margin-bottom: 20px;
+
+					&__label {
+						color: #162359;
+						font-size: 14px;
+						line-height: 18px;
+						margin-bottom: 5px;
+					}
+
+					&__input {
+						color: #162359;
+						height: 45px;
+						width: 100%;
+						border: 1px solid #cdd1de;
+						box-sizing: border-box;
+						border-radius: 5px;
+						background: #f7f8fc;
+						font-weight: 500;
+						font-size: 16px;
+						line-height: 18px;
+						color: #162359;
+						transition: 0.3s;
+						padding: 20px;
+
+						&::placeholder {
+							color: #767e9f;
+							box-sizing: border-box;
+							transition: margin 0.5s ease-out;
+							font-size: 14px;
+							line-height: 15px;
+							margin-bottom: 17px;
+							text-align: justify;
+						}
+
+						&:-ms-input-placeholder {
+							color: #767e9f;
+							box-sizing: border-box;
+							transition: margin 0.5s ease-out;
+							font-size: 14px;
+							line-height: 15px;
+							margin-bottom: 17px;
+							text-align: justify;
+						}
+
+						&::-ms-input-placeholder {
+							color: #767e9f;
+							box-sizing: border-box;
+							transition: margin 0.5s ease-out;
+							font-size: 14px;
+							line-height: 15px;
+							margin-bottom: 17px;
+							text-align: justify;
+						}
+					}
+				}
+
+				&__button {
+					width: 120px;
+					height: 40px;
+					margin: auto;
+					margin-top: 35px;
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					background: #4d75f4;
+					border-radius: 5px;
+					color: white;
+					cursor: pointer;
+					font-size: 15px;
+					border: 1px solid #4d75f4;
+
+					&:hover {
+						color: white;
+						background: #4d75f4;
+						border: 1px solid #4d75f4;
+					}
+
+					&:focus {
+						color: white;
+						background: #4d75f4;
+						border: 1px solid #4d75f4;
+					}
+
+					&:active {
+						color: white;
+						background: #4d75f4;
+						border: 1px solid #4d75f4;
+					}
+				}
+			}
+		}
+
+		&__employees {
+			margin-top: 20px;
+			height: 370px;
+			overflow: scroll;
+
+			&__panel {
+				display: flex;
+				justify-content: space-between;
+				padding: 20px 30px;
+
+				&__details {
+					display: flex;
+
+					&__more {
+						margin-left: 30px;
+						margin-top: 10px;
+
+						&__item {
+							margin-bottom: 10px;
+							font-size: 16px;
+
+							span {
+								font-weight: 600;
+								font-size: 18px;
+							}
+						}
+					}
+				}
+
+				&__projects {
+					width: 600px;
+					height: 250px;
+					border: 2px solid black;
+					overflow: scroll;
+
+					&__header {
+						width: 100%;
+						height: 40px;
+						border-bottom: 1px solid black;
+						font-size: 16px;
+						padding: 5px 20px;
+						font-weight: 600;
+					}
+
+					&__container {
+						margin-top: 10px;
+						width: 100%;
+
+						&__details {
+							display: flex;
+						}
+
+						&__item {
+							width: 90%;
+							height: 80px;
+							margin: 0 auto 10px auto;
+							border: 2px solid black;
+							padding: 5px 20px;
+							border-radius: 5px;
+							text-align: center;
+
+							&__text {
+								margin-bottom: 5px;
+								margin-right: 20px;
+								color: #767e9f;
+								font-size: 14px;
+
+								span {
+									color: black;
+									font-size: 16px;
+								}
+							}
+
+							&__button {
+								width: 120px;
+								height: 30px;
+								margin: 5px auto;
+								text-align: center;
+								justify-content: center;
+								background: red;
+								cursor: pointer;
+								border-radius: 5px;
+								color: white;
+								border: 1px solid red;
+
+								&__icon {
+									color: white;
+									margin-left: 5px;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
 }
