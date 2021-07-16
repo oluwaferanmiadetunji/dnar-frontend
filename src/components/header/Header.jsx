@@ -8,7 +8,7 @@ import { useDispatch } from 'react-redux';
 import { setIsLogged, setUserData } from 'store/user.slice';
 
 import { message, Layout, Menu, Dropdown } from 'antd';
-import { CaretDownOutlined, LogoutOutlined, DashboardOutlined, UsergroupAddOutlined, ProjectOutlined } from '@ant-design/icons';
+import { CaretDownOutlined, LogoutOutlined, DashboardOutlined, UserOutlined, UsergroupAddOutlined, ProjectOutlined } from '@ant-design/icons';
 
 export default function Header() {
 	const history = useHistory();
@@ -39,6 +39,11 @@ export default function Header() {
 			<Menu.Item onClick={() => history.push(ROUTES.PROJECTS)} className={styles.container__dropdown__menu__item}>
 				<ProjectOutlined />
 				<span>Projects</span>
+			</Menu.Item>
+
+			<Menu.Item onClick={() => history.push(ROUTES.ROLES)} className={styles.container__dropdown__menu__item}>
+				<UserOutlined />
+				<span>Roles</span>
 			</Menu.Item>
 
 			<Menu.Item onClick={logout} className={styles.container__dropdown__menu__item}>

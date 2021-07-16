@@ -3,6 +3,7 @@ export const ROUTES = {
 	DASHBOARD: '/dashboard',
 	EMPLOYEES: '/emploees',
 	PROJECTS: '/projects',
+	ROLES: '/roles',
 };
 
 export const API_URL = 'https://dnar-backend.herokuapp.com';

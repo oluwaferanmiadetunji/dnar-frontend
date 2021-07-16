@@ -14,6 +14,7 @@ const Home = lazy(() => import('pages/home'));
 const Dashboard = lazy(() => import('pages/dashboard'));
 const Projects = lazy(() => import('pages/projects'));
 const Employees = lazy(() => import('pages/employees'));
+const Roles = lazy(() => import('pages/roles'));
 
 function Routes() {
 	const dispatch = useDispatch();
@@ -21,7 +22,7 @@ function Routes() {
 	useEffect(() => {
 		(async () => {
 			const { data, error } = await makeGetRequest('/role');
-			console.log(data);
+
 			if (!error) {
 				dispatch(setRoles(data.results));
 			}
@@ -33,6 +34,7 @@ function Routes() {
 			<AuthRoute exact path={ROUTES.DASHBOARD} component={Dashboard} />
 			<AuthRoute exact path={ROUTES.PROJECTS} component={Projects} />
 			<AuthRoute exact path={ROUTES.EMPLOYEES} component={Employees} />
+			<AuthRoute exact path={ROUTES.ROLES} component={Roles} />
 			<UnAuthRoute exact path={ROUTES.HOME} component={Home} />
 			<Route render={() => <Redirect to={ROUTES.HOME} />} />
 		</Switch>
