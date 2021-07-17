@@ -7,7 +7,7 @@ import { makeGetRequest } from 'utils/api';
 import { useDispatch } from 'react-redux';
 import { setRoles } from 'store/roles.slice';
 import { setProjects } from 'store/projects.slice';
-import { setEmployees } from 'store/employee.slice';
+import { setEmployees } from 'store/employees.slice';
 
 import AuthRoute from './AuthRoute';
 import UnAuthRoute from './UnAuthRoute';
@@ -39,10 +39,10 @@ function Routes() {
 		})();
 
 		(async () => {
-			const { data, error } = await makeGetRequest('/employee?limit=100');
+			const { data, error } = await makeGetRequest('/employee');
 
 			if (!error) {
-				dispatch(setEmployees(data.results));
+				dispatch(setEmployees(data));
 			}
 		})();
 	}, []);

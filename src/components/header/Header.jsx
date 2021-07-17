@@ -22,6 +22,7 @@ const Header = ({ title }) => {
 		setTimeout(() => {
 			dispatch(setIsLogged(false));
 			dispatch(setUserData({}));
+			window.localStorage.clear();
 			history.push(ROUTES.HOME);
 		}, 500);
 	};

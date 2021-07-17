@@ -9,7 +9,7 @@ import { PlusOutlined } from '@ant-design/icons';
 
 import { makePostRequest } from 'utils/api';
 
-import { setEmployees } from 'store/employee.slice';
+import { setEmployees } from 'store/employees.slice';
 
 import { useDispatch, useSelector } from 'react-redux';
 

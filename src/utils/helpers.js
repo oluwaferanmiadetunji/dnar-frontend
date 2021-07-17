@@ -2,6 +2,10 @@ export const getRole = (roles, id) => {
 	return id ? roles.find((x) => x.id === id).title : '';
 };
 
+export const getProjectDetails = (projects, id) => {
+	return id ? projects.find((x) => x.id === id) : { name: '', description: '' };
+};
+
 export const getNormalisedOptions = (array, id) => {
 	const selectedRole = array.find((x) => x.id === id);
 

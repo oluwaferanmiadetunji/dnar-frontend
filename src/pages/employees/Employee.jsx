@@ -1,44 +1,20 @@
-import { useState } from 'react';
-
 import styles from './style.module.scss';
 
 import Layout from 'components/layout';
-import { Button as Loader } from 'components/loader';
 import AddEmployee from './components/AddEmployee';
-import NoProjects from 'components/empty/Projects';
+import Projects from './components/Projects';
+import NoEmployees from 'components/empty/Employees';
 
-import { message } from 'antd';
-import { DeleteOutlined } from '@ant-design/icons';
+import { Collapse } from 'antd';
 
-import { useSelector, useDispatch } from 'react-redux';
-import { setProjects } from 'store/projects.slice';
-
-import { makeDeleteRequest } from 'utils/api';
+import { useSelector } from 'react-redux';
 import { getRole } from 'utils/helpers';
 import { DEFAULT_IMAGE } from 'utils/constants';
 
-export default function Projects() {
-	const [loading, setLoading] = useState(false);
-	const [ID, setID] = useState('');
+const { Panel } = Collapse;
 
-	const dispatch = useDispatch();
-	const { roles, user, projects, employees } = useSelector((state) => state);
-
-	const deleteProject = async (id) => {
-		setLoading(true);
-		setID(id);
-		const { data, error } = await makeDeleteRequest(`/project/${id}`);
-
-		if (!error) {
-			message.success('Project deleted successfully');
-			const newProjects = projects.filter((project) => project.id !== id);
-			dispatch(setProjects(newProjects));
-		} else {
-			message.error(data.message);
-		}
-
-		setLoading(false);
-	};
+export default function Employees() {
+	const { roles, employees, user } = useSelector((state) => state);
 
 	return (
 		<Layout title='Employees'>
@@ -51,45 +27,48 @@ export default function Projects() {
 					</div>
 
 					<div className={styles.container__card__employees}>
-						{employees.length > 0 ? (
-							employees.map(({ first_name, last_name, email, country, role, id }, index) => (
-								<div key={index} className={styles.container__card__employees__item}>
-									<div className={styles.container__user}>
-										<div className={styles.container__user__image}>
-											<img src={DEFAULT_IMAGE} alt='user' />
-										</div>
-										<div className={styles.container__user__details}>
-											<p className={styles.container__user__details__item}>
-												Name: <span>{first_name || last_name ? `${first_name} ${last_name}` : 'Null'}</span>
-											</p>
+						<Collapse accordion>
+							{employees.length > 0 ? (
+								employees
+									.filter((employee) => employee.data.id !== user.data.id)
+									.map(({ data, role, projects }, index) => {
+										const { first_name, last_name, email, country, id } = data;
 
-											<p className={styles.container__user__details__item}>
-												Email: <span>{email || 'Null'}</span>
-											</p>
+										return (
+											<Panel key={index} showArrow={false} header={`${first_name || last_name ? `${first_name} ${last_name}` : email}`} key={id}>
+												<div className={styles.container__card__employees__item}>
+													<div className={styles.container__user}>
+														<div className={styles.container__user__image}>
+															<img src={DEFAULT_IMAGE} alt='user' />
+														</div>
 
-											<p className={styles.container__user__details__item}>
-												Country: <span>{country || 'Null'}</span>
-											</p>
-											<p className={styles.container__user__details__item}>
-												Role: <span>{getRole(roles, role) || 'Null'}</span>
-											</p>
-										</div>
-									</div>
-									{/* <button className={styles.container__card__employees__item__button} onClick={() => deleteProject(id)}>
-										{loading && ID === id ? (
-											<Loader />
-										) : (
-											<>
-												<span>Remove</span>
-												<DeleteOutlined className={styles.container__card__employees__item__button__icon} />
-											</>
-										)}
-									</button> */}
-								</div>
-							))
-						) : (
-							<NoProjects />
-						)}
+														<div className={styles.container__user__details}>
+															<p className={styles.container__user__details__item}>
+																Name: <span>{first_name || last_name ? `${first_name} ${last_name}` : 'Null'}</span>
+															</p>
+
+															<p className={styles.container__user__details__item}>
+																Email: <span>{email || 'Null'}</span>
+															</p>
+
+															<p className={styles.container__user__details__item}>
+																Country: <span>{country || 'Null'}</span>
+															</p>
+															<p className={styles.container__user__details__item}>
+																Role: <span>{getRole(roles, role) || 'Null'}</span>
+															</p>
+														</div>
+
+														<Projects projects={projects} employeed_id={id} />
+													</div>
+												</div>
+											</Panel>
+										);
+									})
+							) : (
+								<NoEmployees />
+							)}
+						</Collapse>
 					</div>
 				</div>
 			</div>

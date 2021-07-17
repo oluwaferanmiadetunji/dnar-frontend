@@ -13,7 +13,6 @@
 		border-radius: 5px;
 		margin: 10px auto;
 		display: flex;
-		padding: 10px 20px;
 		position: relative;
 
 		&__image {
@@ -22,6 +21,8 @@
 
 		&__details {
 			margin-left: 30px;
+			width: 100%;
+
 			&__item {
 				margin-bottom: 10px;
 				color: #767e9f;
@@ -38,7 +39,7 @@
 	}
 
 	&__card {
-		width: 70%;
+		width: 80%;
 		height: calc(100vh - 200px);
 		background: white;
 		border-radius: 10px;
@@ -109,11 +110,9 @@
 			height: calc(100% - 80px);
 
 			&__item {
-				box-shadow: 0 2px 3px rgba(22, 35, 89, 0.08);
-				padding: 10px 20px;
-				border: 1px solid #e5e5e5;
 				border-radius: 5px;
 				margin-bottom: 20px;
+				width: 100%;
 
 				&__text {
 					margin-bottom: 5px;
@@ -299,6 +298,85 @@
 							background: #4d75f4;
 							border: 1px solid #4d75f4;
 						}
+					}
+				}
+			}
+		}
+	}
+
+	&__employees {
+		&__projects {
+			margin-left: 40px;
+			width: 100%;
+			box-shadow: 0 2px 3px rgba(22, 35, 89, 0.08);
+			padding: 10px 20px;
+			height: 200px;
+			overflow-y: auto;
+			position: relative;
+
+			&__header {
+				display: flex;
+				justify-content: space-between;
+				position: absolute;
+				width: 100%;
+				top: 0;
+				left: 0;
+				height: 40px;
+				padding: 10px 30px;
+				box-shadow: 0 2px 3px rgba(22, 35, 89, 0.08);
+				// border: 1px solid #e5e5e5;
+
+				&__text {
+					font-size: 20px;
+					color: #162359;
+					margin-top: -5px;
+					text-align: center;
+					justify-content: center;
+				}
+			}
+
+			&__item {
+				box-shadow: 0 2px 3px rgba(22, 35, 89, 0.08);
+				padding: 10px 20px;
+				border: 1px solid #e5e5e5;
+				border-radius: 5px;
+				margin: 10px;
+
+				&__container {
+					margin-top: 40px;
+				}
+
+				&__text {
+					margin-bottom: 5px;
+					color: #767e9f;
+					font-size: 14px;
+
+					span {
+						font-weight: 600;
+						font-size: 16px;
+						color: #162359;
+						margin-left: 5px;
+					}
+				}
+
+				&__button {
+					background: red;
+					border: 1px solid red;
+					color: white;
+					cursor: pointer;
+					padding: 10px;
+					width: 120px;
+					height: 40px;
+					font-size: 16px;
+					justify-content: center;
+					align-items: center;
+					text-align: center;
+					display: flex;
+					border-radius: 5px;
+					margin: 20px 0;
+
+					&__icon {
+						margin-left: 10px;
 					}
 				}
 			}
