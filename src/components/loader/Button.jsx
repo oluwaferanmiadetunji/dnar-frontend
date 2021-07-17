@@ -1,9 +1,8 @@
-import styles from './style.module.scss';
+import { Spin } from 'antd';
+import { LoadingOutlined } from '@ant-design/icons';
+
+const antIcon = <LoadingOutlined style={{ fontSize: 24, color: 'white' }} spin />;
 
 export default function Loader() {
-	return (
-		<div className={styles.button}>
-			<div className={styles.button__loader} />
-		</div>
-	);
+	return <Spin indicator={antIcon} />;
 }

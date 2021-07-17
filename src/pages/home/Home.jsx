@@ -31,7 +31,6 @@ export default function Login() {
 			message.success('Login successful');
 
 			setTimeout(() => {
-				setLoading(false);
 				dispatch(setIsLogged(true));
 				dispatch(setUserData(data));
 				history.push(ROUTES.DASHBOARD);
@@ -39,6 +38,8 @@ export default function Login() {
 		} else {
 			message.error(data.message);
 		}
+
+		setLoading(false);
 	};
 
 	return (
@@ -61,7 +62,7 @@ export default function Login() {
 					</div>
 
 					<button type='submit' className={styles.container__card__form__button} disabled={loading}>
-						{loading ? <Loader /> : 'Enter'}
+						{loading ? <Loader /> : 'Login'}
 					</button>
 				</form>
 			</div>
