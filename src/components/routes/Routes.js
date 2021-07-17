@@ -6,6 +6,7 @@ import { makeGetRequest } from 'utils/api';
 
 import { useDispatch } from 'react-redux';
 import { setRoles } from 'store/roles.slice';
+import { setProjects } from 'store/projects.slice';
 
 import AuthRoute from './AuthRoute';
 import UnAuthRoute from './UnAuthRoute';
@@ -20,6 +21,14 @@ function Routes() {
 	const dispatch = useDispatch();
 
 	useEffect(() => {
+		(async () => {
+			const { data, error } = await makeGetRequest('/project');
+
+			if (!error) {
+				dispatch(setProjects(data.results));
+			}
+		})();
+
 		(async () => {
 			const { data, error } = await makeGetRequest('/role');
 

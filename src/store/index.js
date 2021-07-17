@@ -3,10 +3,12 @@ import storage from 'redux-persist/lib/storage';
 import { persistReducer } from 'redux-persist';
 import UserReducer from './user.slice';
 import RolesReducer from './roles.slice';
+import ProjectsReducer from './projects.slice';
 
 const rootReducer = combineReducers({
 	user: UserReducer,
 	roles: RolesReducer,
+	projects: ProjectsReducer,
 });
 
 const persistConfig = {
