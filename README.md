@@ -1,16 +1,16 @@
 <p align="center">
  
-  <h3 align="center">DNAR Backend</h3>
+  <h3 align="center">DNAR Frontend</h3>
 
   <p align="center">
-    CRUD Rest API with PM2
+    A Single Page Application for basic CRUD functions
     <br />
     <br />
     <a href="https://dnar.netlify.app/">View Demo</a>
     ·
-    <a href="https://github.com/oluwaferanmiadetunji/dnar-backend/issues">Report Bug</a>
+    <a href="https://github.com/oluwaferanmiadetunji/dnar-frontend/issues">Report Bug</a>
     ·
-    <a href="https://github.com/oluwaferanmiadetunji/dnar-backend/issues">Request Feature</a>
+    <a href="https://github.com/oluwaferanmiadetunji/dnar-frontend/issues">Request Feature</a>
   </p>
 </p>
 
@@ -18,29 +18,29 @@
 
 ## Table of Contents
 
-- [About the Project](#about-the-project)
-  - [Built With](#built-with)
-- [Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Installation](#installation)
-  - [Starting](#starting)
-  - [Tests](#tests)
-- [Contributing](#contributing)
-- [License](#license)
-- [Contact](#contact)
-- [Acknowledgements](#acknowledgements)
+-   [About the Project](#about-the-project)
+    -   [Built With](#built-with)
+-   [Getting Started](#getting-started)
+    -   [Prerequisites](#prerequisites)
+    -   [Installation](#installation)
+    -   [Starting](#starting)
+-   [Contributing](#contributing)
+-   [License](#license)
+-   [Contact](#contact)
 
 <!-- ABOUT THE PROJECT -->
 
 ## About The Project
 
-This is a CRUD Rest API
+ A Single Page Application for basic CRUD functions
+
+[<img src="img.png" alt="homepage" >](https://dnar.netlify.app)
 
 ### Built With
 
-- [Express](https://expressjs.com/)
-- [Node](https://nodejs.org/en/)
-- [Mongo DB](https://www.mongodb.com/)
+-   [React](https://reactjs.org/)
+-   [React Redux](https://react-redux.js.org/)
+-   [Ant Design](https://ant.design/)
 
 <!-- GETTING STARTED -->
 
@@ -53,7 +53,7 @@ To get a local copy up and running follow these simple steps.<br/><br/>
 1. Clone the repo
 
 ```sh
-git clone https://github.com/oluwaferanmiadetunji/dnar-backend.git
+git clone https://github.com/oluwaferanmiadetunji/dnar-frontend.git
 ```
 
 2. Install NPM packages
@@ -68,18 +68,9 @@ or
 yarn
 ```
 
-<br/>
-Create a new .env file, then copy the contents of .env.sample to the .env file created<br/><br/>
-
 ### Starting
 
-For development, run
-
-```sh
-yarn dev
-```
-
-For production, run
+Run
 
 ```sh
 yarn start
@@ -89,15 +80,7 @@ in the root of the application
 <br/>
 <br/>
 
-You will then be able to access the server at whatever port you select<br/><br/>
-
 ### Testing
-
-To run tests, run
-
-```sh
-yarn test
-```
 
 <!-- CONTRIBUTING -->
 
@@ -112,11 +95,6 @@ Contributions are what make the open source community such an amazing place to b
 3. Commit your Changes (`git commit -m 'Add some AmazingFeature`)
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
-
-## Documentation URL
-
-- [Documentation](https://documenter.getpostman.com/view/12669042/TzmBDZii)
-<!-- LICENSE -->
 
 ## License
 
