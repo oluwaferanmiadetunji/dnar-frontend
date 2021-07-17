@@ -2,6 +2,8 @@ import styles from './style.module.scss';
 
 import { useHistory } from 'react-router-dom';
 
+import PropTypes from 'prop-types';
+
 import { ROUTES, DEFAULT_IMAGE } from 'utils/constants';
 
 import { useDispatch } from 'react-redux';
@@ -10,7 +12,7 @@ import { setIsLogged, setUserData } from 'store/user.slice';
 import { message, Layout, Menu, Dropdown } from 'antd';
 import { CaretDownOutlined, LogoutOutlined, DashboardOutlined, UserOutlined, UsergroupAddOutlined, ProjectOutlined } from '@ant-design/icons';
 
-export default function Header() {
+const Header = ({ title }) => {
 	const history = useHistory();
 	const dispatch = useDispatch();
 
@@ -55,7 +57,7 @@ export default function Header() {
 
 	return (
 		<Layout.Header className={styles.container}>
-			<p className={styles.container__location}>Home</p>
+			<p className={styles.container__location}>{title}</p>
 
 			<Dropdown overlay={menu} trigger={['click']}>
 				<span className={styles.container__dropdown}>
@@ -70,4 +72,10 @@ export default function Header() {
 			</Dropdown>
 		</Layout.Header>
 	);
-}
+};
+
+Header.propTypes = {
+	title: PropTypes.string,
+};
+
+export default Header;

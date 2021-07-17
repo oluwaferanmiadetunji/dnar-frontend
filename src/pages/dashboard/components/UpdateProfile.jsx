@@ -12,7 +12,7 @@ import { makePostRequest } from 'utils/api';
 import { useSelector, useDispatch } from 'react-redux';
 import { setUserData } from 'store/user.slice';
 
-export default function Header() {
+export default function UpdateProfile() {
 	const dispatch = useDispatch();
 
 	const { data } = useSelector((state) => state.user);
@@ -58,7 +58,9 @@ export default function Header() {
 	return (
 		<div className={styles.container__user__update}>
 			<Tooltip title='Update Profile'>
-				<EditOutlined className={styles.container__user__update__icon} onClick={() => setVisible(true)} />
+				<div className={styles.container__user__update__icon__container}>
+					<EditOutlined className={styles.container__user__update__icon} onClick={() => setVisible(true)} />
+				</div>
 			</Tooltip>
 			<Modal className={styles.container__user__update__modal} footer={null} centered visible={visible} onCancel={closeModal}>
 				<p className={styles.container__user__update__modal__header}>Update Profile</p>

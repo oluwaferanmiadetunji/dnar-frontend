@@ -5,6 +5,7 @@ import Layout from 'components/layout';
 import { DEFAULT_IMAGE } from 'utils/constants';
 
 import UpdateProfile from './components/UpdateProfile';
+import Projects from './components/Projects';
 
 import { useSelector } from 'react-redux';
 
@@ -13,9 +14,10 @@ export default function Dashboard() {
 	const roles = useSelector((state) => state.roles);
 
 	return (
-		<Layout>
+		<Layout title='Dashboard'>
 			<div className={styles.container}>
 				<div className={styles.container__image} />
+
 				<div className={styles.container__user}>
 					<UpdateProfile />
 					<div className={styles.container__user__image}>
@@ -55,6 +57,8 @@ export default function Dashboard() {
 						</p>
 					</div>
 				</div>
+
+				<Projects />
 			</div>
 		</Layout>
 	);

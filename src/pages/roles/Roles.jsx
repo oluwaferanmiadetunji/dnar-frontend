@@ -4,7 +4,7 @@ import Layout from 'components/layout';
 
 export default function Roles() {
 	return (
-		<Layout>
+		<Layout title='Roles'>
 			<div className={styles.container}>Roles</div>
 		</Layout>
 	);

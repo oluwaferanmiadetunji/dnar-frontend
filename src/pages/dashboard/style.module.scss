@@ -31,7 +31,18 @@
 			&__icon {
 				font-size: 24px;
 				cursor: pointer;
-				color: #767e9f;
+
+				&__container {
+					color: #767e9f;
+					height: 35px;
+					width: 35px;
+					padding: 5px;
+					border-radius: 5px;
+
+					&:hover {
+						background: #e5e5e5;
+					}
+				}
 			}
 
 			&__modal {
@@ -204,6 +215,69 @@
 					font-size: 16px;
 					color: #162359;
 					margin-left: 5px;
+				}
+			}
+		}
+	}
+
+	&__projects {
+		width: 70%;
+		height: 300px;
+		overflow-y: auto;
+		background: white;
+		border-radius: 5px;
+		margin: 20px auto;
+		padding: 20px 50px;
+		position: relative;
+
+		&__header {
+			color: #162359;
+			font-weight: 600;
+			font-size: 16px;
+		}
+
+		&__container {
+			margin-top: 0px;
+
+			&__item {
+				box-shadow: 0 2px 3px rgba(22, 35, 89, 0.08);
+				padding: 10px 20px;
+				border: 1px solid #e5e5e5;
+				border-radius: 10px;
+				margin-bottom: 20px;
+
+				&__text {
+					margin-bottom: 5px;
+					color: #767e9f;
+					font-size: 14px;
+
+					span {
+						font-weight: 600;
+						font-size: 16px;
+						color: #162359;
+						margin-left: 5px;
+					}
+				}
+
+				&__button {
+					background: red;
+					border: 1px solid red;
+					color: white;
+					cursor: pointer;
+					padding: 10px;
+					width: 120px;
+					height: 40px;
+					font-size: 16px;
+					justify-content: center;
+					align-items: center;
+					text-align: center;
+					display: flex;
+					border-radius: 5px;
+					margin: 20px 0;
+
+					&__icon {
+						margin-left: 10px;
+					}
 				}
 			}
 		}
