@@ -29,7 +29,7 @@ export default function Header() {
 
 		if (!error) {
 			message.success('Project created successfully');
-			setLoading(false);
+
 			dispatch(setProjects([data, ...projects]));
 			setTimeout(() => {
 				closeModal();
@@ -37,6 +37,8 @@ export default function Header() {
 		} else {
 			message.error(data.message);
 		}
+
+		setLoading(false);
 	};
 
 	const closeModal = () => {

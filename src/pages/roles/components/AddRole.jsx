@@ -29,7 +29,7 @@ export default function Header() {
 
 		if (!error) {
 			message.success('Role created successfully');
-			setLoading(false);
+
 			dispatch(setRoles([data, ...roles]));
 			setTimeout(() => {
 				closeModal();
@@ -37,6 +37,7 @@ export default function Header() {
 		} else {
 			message.error(data.message);
 		}
+		setLoading(false);
 	};
 
 	const closeModal = () => {

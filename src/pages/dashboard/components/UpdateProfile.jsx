@@ -36,13 +36,15 @@ export default function UpdateProfile() {
 			dispatch(setUserData(response.data.data));
 			dispatch(setUserRole(response.data.role));
 			message.success('Profile updated successfully');
-			setLoading(false);
+
 			setTimeout(() => {
 				closeModal();
 			}, 750);
 		} else {
 			message.error(response.data.message);
 		}
+
+		setLoading(false);
 	};
 
 	const closeModal = () => {
@@ -123,7 +125,7 @@ export default function UpdateProfile() {
 							onChange={(event) => {
 								setRole(event.target.value);
 							}}>
-							<option value={getNormalisedOptions(roles, role).selectedRole.id}>{getNormalisedOptions(roles, role).selectedRole.title}</option>
+							<option value={getNormalisedOptions(roles, role).selectedRole?.id}>{getNormalisedOptions(roles, role).selectedRole?.title}</option>
 							{getNormalisedOptions(roles, role).otherRoles.map(({ title, id }, index) => (
 								<option key={index} value={id}>
 									{title}
