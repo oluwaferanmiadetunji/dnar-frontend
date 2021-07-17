@@ -7,47 +7,42 @@ import { Button as Loader } from 'components/loader';
 import { Modal, message, Tooltip } from 'antd';
 import { EditOutlined } from '@ant-design/icons';
 
-import { makePostRequest } from 'utils/api';
+import { makePatchRequest } from 'utils/api';
+import { getNormalisedOptions } from 'utils/helpers';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { setUserData } from 'store/user.slice';
+import { setUserData, setUserRole } from 'store/user.slice';
 
 export default function UpdateProfile() {
 	const dispatch = useDispatch();
 
-	const { data } = useSelector((state) => state.user);
+	const user = useSelector((state) => state.user);
 	const roles = useSelector((state) => state.roles);
 
 	const [visible, setVisible] = useState(false);
 	const [loading, setLoading] = useState(false);
-	const [email, setEmail] = useState(data?.email || '');
-	const [firstName, setFirstName] = useState(data?.first_name || '');
-	const [lastName, setLastName] = useState(data?.last_name || '');
-	const [country, setCountry] = useState(data?.country || '');
-	const [role, setRole] = useState(data?.role || roles[0].label);
+	const [firstName, setFirstName] = useState(user?.data?.first_name || '');
+	const [lastName, setLastName] = useState(user?.data?.last_name || '');
+	const [country, setCountry] = useState(user?.data?.country || '');
+	const [role, setRole] = useState(user?.role);
 
 	const handleSubmit = async (event) => {
 		event.preventDefault();
 		setLoading(true);
 
-		dispatch(setUserData({ ...data, email, first_name: firstName, last_name: lastName, country, role }));
-		message.success('Profile updated successfully');
-		setLoading(false);
-		setTimeout(() => {
-			closeModal();
-		}, 750);
+		const response = await makePatchRequest({ path: `/employee/${user.data.id}`, payload: { first_name: firstName, last_name: lastName, country, role_id: role } });
 
-		// const { error, data } = await makePostRequest({ path: '/employee', payload: { email, first_name: firstName, last_name: lastName, country } });
-
-		// if (!error) {
-		// 	message.success('Employee created successfully');
-		// 	setLoading(false);
-		// 	setTimeout(() => {
-		// 		closeModal();
-		// 	}, 750);
-		// } else {
-		// 	message.error(data.message);
-		// }
+		if (!response.error) {
+			dispatch(setUserData(response.data.data));
+			dispatch(setUserRole(response.data.role));
+			message.success('Profile updated successfully');
+			setLoading(false);
+			setTimeout(() => {
+				closeModal();
+			}, 750);
+		} else {
+			message.error(response.data.message);
+		}
 	};
 
 	const closeModal = () => {
@@ -100,8 +95,8 @@ export default function UpdateProfile() {
 							placeholder='Enter your Email Address'
 							type='email'
 							required
-							value={email}
-							onChange={(event) => setEmail(event.target.value)}
+							value={user?.data?.email || ''}
+							disabled
 						/>
 					</div>
 
@@ -127,10 +122,10 @@ export default function UpdateProfile() {
 							required
 							onChange={(event) => {
 								setRole(event.target.value);
-								console.log(event.target.value);
 							}}>
-							{roles.map(({ title }, index) => (
-								<option key={index} value={title}>
+							<option value={getNormalisedOptions(roles, role).selectedRole.id}>{getNormalisedOptions(roles, role).selectedRole.title}</option>
+							{getNormalisedOptions(roles, role).otherRoles.map(({ title, id }, index) => (
+								<option key={index} value={id}>
 									{title}
 								</option>
 							))}

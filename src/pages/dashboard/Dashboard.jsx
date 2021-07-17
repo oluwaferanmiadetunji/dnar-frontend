@@ -3,6 +3,7 @@ import styles from './style.module.scss';
 import Layout from 'components/layout';
 
 import { DEFAULT_IMAGE } from 'utils/constants';
+import { getRole } from 'utils/helpers';
 
 import UpdateProfile from './components/UpdateProfile';
 import Projects from './components/Projects';
@@ -12,7 +13,7 @@ import { useSelector } from 'react-redux';
 export default function Dashboard() {
 	const { roles, user, projects } = useSelector((state) => state);
 
-	const { data } = user;
+	const { data, projects: userProjects } = user;
 
 	return (
 		<Layout title='Dashboard'>
@@ -37,12 +38,12 @@ export default function Dashboard() {
 							Country: <span>{data?.country || 'Null'}</span>
 						</p>
 						<p className={styles.container__user__details__item}>
-							Role: <span>{data?.role || 'Null'}</span>
+							Role: <span>{getRole(roles, user.role)}</span>
 						</p>
 					</div>
 					<div className={styles.container__user__details}>
 						<p className={styles.container__user__details__item}>
-							Number of Projects: <span>4</span>
+							Number of Projects: <span>{userProjects.length}</span>
 						</p>
 
 						<p className={styles.container__user__details__item}>
