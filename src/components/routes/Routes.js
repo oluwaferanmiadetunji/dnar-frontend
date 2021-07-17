@@ -7,6 +7,7 @@ import { makeGetRequest } from 'utils/api';
 import { useDispatch } from 'react-redux';
 import { setRoles } from 'store/roles.slice';
 import { setProjects } from 'store/projects.slice';
+import { setEmployees } from 'store/employee.slice';
 
 import AuthRoute from './AuthRoute';
 import UnAuthRoute from './UnAuthRoute';
@@ -22,7 +23,7 @@ function Routes() {
 
 	useEffect(() => {
 		(async () => {
-			const { data, error } = await makeGetRequest('/project');
+			const { data, error } = await makeGetRequest('/project?limit=100');
 
 			if (!error) {
 				dispatch(setProjects(data.results));
@@ -30,10 +31,18 @@ function Routes() {
 		})();
 
 		(async () => {
-			const { data, error } = await makeGetRequest('/role');
+			const { data, error } = await makeGetRequest('/role?limit=100');
 
 			if (!error) {
 				dispatch(setRoles(data.results));
+			}
+		})();
+
+		(async () => {
+			const { data, error } = await makeGetRequest('/employee?limit=100');
+
+			if (!error) {
+				dispatch(setEmployees(data.results));
 			}
 		})();
 	}, []);

@@ -4,11 +4,13 @@ import { persistReducer } from 'redux-persist';
 import UserReducer from './user.slice';
 import RolesReducer from './roles.slice';
 import ProjectsReducer from './projects.slice';
+import EmployeesReducer from './employee.slice';
 
 const rootReducer = combineReducers({
 	user: UserReducer,
 	roles: RolesReducer,
 	projects: ProjectsReducer,
+	employees: EmployeesReducer,
 });
 
 const persistConfig = {

@@ -11,7 +11,7 @@ import Projects from './components/Projects';
 import { useSelector } from 'react-redux';
 
 export default function Dashboard() {
-	const { roles, user, projects } = useSelector((state) => state);
+	const { roles, user, projects, employees } = useSelector((state) => state);
 
 	const { data, projects: userProjects } = user;
 
@@ -51,7 +51,7 @@ export default function Dashboard() {
 						</p>
 
 						<p className={styles.container__user__details__item}>
-							Total Number of Employees: <span>20</span>
+							Total Number of Employees: <span>{employees.length}</span>
 						</p>
 
 						<p className={styles.container__user__details__item}>

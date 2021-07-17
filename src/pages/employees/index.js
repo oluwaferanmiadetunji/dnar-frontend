@@ -1,3 +1,3 @@
-import Employees from './Employees';
+import Employee from './Employee';
 
-export default Employees;
+export default Employee;
